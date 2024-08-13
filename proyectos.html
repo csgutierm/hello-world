@@ -13,6 +13,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link href="https://unpkg.com/tabulator-tables@6.2.5/dist/css/tabulator.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -69,32 +70,42 @@
     </div>
   </nav>    
 
-  <!-- FORMULARIO MENSAJE DE CORREO -->
-  <div class="container">
-    <form class="row g-3 ms-1 me-1 justify-content-center mt-5 needs-validation" novalidate>
-      <div class="col-lg-4 col-md-6 col-sm-12 p-3 border rounded shadow">
-        <div class="mb-3">
-          <h3>Formulario de contacto</h3>
-          <label for="validationCustom04" class="form-label">Correo</label>
-          <input type="email" class="form-control" id="validationCustom04" placeholder="nombre@ejemplo.com"
-            aria-describedby="inputGroupPrepend" required>
-          <div class="invalid-feedback">
-            Ingresa un correo válido
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="validationCustom05" class="form-label">Mensaje</label>
-          <textarea class="form-control" id="validationCustom05" rows="3" required></textarea>
-          <div class="invalid-feedback">
-            Ingresa un mensaje.
-          </div>
-        </div>
-        <div class="col-auto d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary" type="submit">Enviar</button>
-        </div>
+  <article>
+    <div class="container">
+      <div class="text-center mt-3">
+        <h1>&#x1F326; API del clima &#x1F326;</h1>
       </div>
-    </form>
-  </div>
+  
+      <div class="text-center mt-5">
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <label for="capitales">&#x1F5FA; Selecciona una capital:</label>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-12 mt-1">
+            <select id="capitales" name="capitales">
+              <!-- Las opciones se agregarán aquí mediante JavaScript -->
+            </select>   
+          </div>
+
+        </div>
+
+        <div id="resultado">
+          <!-- Aquí se mostrarán los datos del clima -->
+        </div>
+
+        <!--Tabulator table-->
+        <div class="p-1">
+          <div id="example-table"></div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </article>
+
 
   <div class="container">
     <!-- FOOTER -->
@@ -220,6 +231,9 @@
     <script src="assets/js/color-mode.js"></script>
     <script src="assets/js/validation.js"></script>
     <script defer src="assets/js/scripts.js"></script>
+    <script src="assets/js/clima.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js "></script>
 </body>
 
 </html>
