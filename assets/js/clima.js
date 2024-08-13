@@ -88,28 +88,14 @@ async function obtenerClima(coordenadas) {
     }
 }
 
-async function obtenerClimaTabulator(coordenadas) {
-    const { DateTime } = luxon;
-    const [latitude, longitude] = coordenadas.split(',');
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m&forecast_days=1`;
+let table;
 
-    try {
-        const respuesta = await fetch(url);
-        const datos = await respuesta.json();
-
-        // Transformar datos para Tabulator
-        const tabledata = datos.hourly.time.map((time, index) => {
-            const localTime = DateTime.fromISO(time).toLocaleString(DateTime.TIME_SIMPLE); // Formatear tiempo usando Luxon
-            return {
-                time: localTime,
-                temperature: datos.hourly.temperature_2m[index],
-                humidity: datos.hourly.relative_humidity_2m[index],
-                windSpeed: datos.hourly.wind_speed_10m[index]
-            };
-        });
-
-        // Configurar Tabulator
-        const table = new Tabulator("#example-table", {
+async function crearTabla(tabledata){
+        if (table) {
+            // Actualiza los datos de la tabla existente
+            table.setData(tabledata);
+        } else {
+            table = new Tabulator("#example-table", {
             data: tabledata,
             //layout: "fitColumns",
             layout: "fitDataTable",
@@ -125,12 +111,37 @@ async function obtenerClimaTabulator(coordenadas) {
                 tooltip: true,
             },
             columns: [
-                { title: "Hora", field: "time", sorter: "date", hozAlign: "center", frozen:true, resizable:false },
-                { title: "Temp. (°C)", field: "temperature", hozAlign: "center", frozen:true, resizable:false },
-                { title: "Hum. (%)", field: "humidity", hozAlign: "center", frozen:true, resizable:false },
+                { title: "Hora", field: "time", sorter: "date", hozAlign: "center", frozen: true, resizable: false },
+                { title: "Temp. (°C)", field: "temperature", hozAlign: "center", frozen: true, resizable: false },
+                { title: "Hum. (%)", field: "humidity", hozAlign: "center", frozen: true, resizable: false },
                 //{ title: "Viento (km/h)", field: "windSpeed", hozAlign: "center", frozen:true, resizable:false }
             ],
         });
+    }
+}
+
+
+async function obtenerClimaTabulator(coordenadas) {
+    const { DateTime } = luxon;
+    const [latitude, longitude] = coordenadas.split(',');
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m&forecast_days=1`;
+
+    try {
+        const respuesta = await fetch(url);
+        const datos = await respuesta.json();        
+
+        // Transformar datos para Tabulator
+        const tabledata = datos.hourly.time.map((time, index) => {
+            const localTime = DateTime.fromISO(time).toLocaleString(DateTime.TIME_SIMPLE); // Formatear tiempo a hh:mm AM/PM
+            return {
+                time: localTime,
+                temperature: datos.hourly.temperature_2m[index],
+                humidity: datos.hourly.relative_humidity_2m[index],
+                windSpeed: datos.hourly.wind_speed_10m[index]
+            };
+        });
+
+        crearTabla(tabledata);
 
     } catch (error) {
         console.error('Error al obtener los datos del clima:', error);
@@ -146,5 +157,21 @@ document.getElementById('capitales').addEventListener('change', function () {
 });
 
 
+function fechaTitulo() {
+
+    const { DateTime } = luxon;
+
+    const fechaActual = DateTime.now().toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY);
+
+    document.getElementById('fecha-actual').textContent = `${fechaActual}`;
+
+}
+
+
+
+
+
 // Cargar las coordenadas al cargar la página
 document.addEventListener('DOMContentLoaded', cargarCoordenadas);
+
+document.addEventListener('DOMContentLoaded', fechaTitulo);
