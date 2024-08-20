@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link href="https://unpkg.com/tabulator-tables@6.2.5/dist/css/tabulator.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR INICIO-->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">CSGM</a>
@@ -28,27 +27,42 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page"  href="proyectos.html">Proyectos</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="habilidades.html">Habilidades</a>
           </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Proyectos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="espectrometro_v2.html">Espectrometro</a></li>
+              <li><a class="dropdown-item" href="api_clima.html">Api Clima</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Otros</a></li>
+            </ul>
+          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Utilidades
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Repositorios</a></li>
-              <li><a class="dropdown-item" href="#">Cursos</a></li>
+              <li><a class="dropdown-item" href="repositorios.html">Repositorios</a></li>
+              <li><a class="dropdown-item" href="cursos.html">Cursos</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="#">Youtube</a></li>
             </ul>
           </li>
+
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Área privada</a>
           </li>
@@ -67,44 +81,10 @@
         -->
       </div>
     </div>
-  </nav>    
-
-  <article>
-    <div class="container">
-      <div class="text-center mt-3">
-        <h1>&#x1F326; API del clima &#x1F326;</h1>
-        <h6 id="fecha-actual"></h6>
-      </div>
-  
-      <div class="text-center mt-3">
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col-4">
-            <label for="capitales">&#x1F5FA; Selecciona una capital:</label>
-          </div>
-          <div class="col-4"></div>
-          <div class="col-12 my-3">
-            <select id="capitales" name="capitales">
-              <!-- Las opciones se agregarán aquí mediante JavaScript -->
-            </select>   
-          </div>
-
-        </div>
-
-        <div id="resultado">
-          <!-- Aquí se mostrarán los datos del clima -->
-        </div>
-
-        <!--Tabulator table-->
-        <div class="p-1">
-          <div id="example-table"></div>
-        </div>
+  </nav>
+  <!-- NAVBAR FIN-->   
 
 
-      </div>
-
-    </div>
-  </article>
 
 
   <div class="container">
@@ -229,9 +209,6 @@
     <script src="assets/js/color-mode.js"></script>
     <script src="assets/js/validation.js"></script>
     <script defer src="assets/js/scripts.js"></script>
-    <script src="assets/js/clima.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
-    <script src=" https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js "></script>
 </body>
 
 </html>

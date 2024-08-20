@@ -16,7 +16,7 @@
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR INICIO-->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">CSGM</a>
@@ -27,27 +27,42 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="proyectos.html">Proyectos</a>
+            <a class="nav-link active" href="#">Habilidades</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Habilidades</a>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="proyectos.html" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Proyectos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="espectrometro_v2.html">Espectrometro</a></li>
+              <li><a class="dropdown-item" href="api_clima.html">Api Clima</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Otros</a></li>
+            </ul>
           </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Utilidades
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Repositorios</a></li>
-              <li><a class="dropdown-item" href="#">Cursos</a></li>
+              <li><a class="dropdown-item" href="repositorios.html">Repositorios</a></li>
+              <li><a class="dropdown-item" href="cursos.html">Cursos</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="#">Youtube</a></li>
             </ul>
           </li>
+
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Área privada</a>
           </li>
@@ -66,7 +81,8 @@
         -->
       </div>
     </div>
-  </nav>    
+  </nav>
+  <!-- NAVBAR FIN-->  
 
   <!-- FORMULARIO MENSAJE DE CORREO -->
   <div class="container">

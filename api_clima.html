@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/espectograma.css">
+    <link href="https://unpkg.com/tabulator-tables@6.2.5/dist/css/tabulator.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,8 +41,8 @@
                             Proyectos
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="#">Espectrometro</a></li>
-                            <li><a class="dropdown-item" href="api_clima.html">Api Clima</a></li>
+                            <li><a class="dropdown-item" href="espectrometro_v2.html">Espectrometro</a></li>
+                            <li><a class="dropdown-item active" href="#">Api Clima</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -85,88 +85,36 @@
         </div>
     </nav>
     <!-- NAVBAR FIN-->
-    <!--   
-    <h1>Espectrograma de un archivo MP3</h1>
-    <input type="file" id="fileInput" accept="audio/mpeg,audio/ogg">
-    <input type="text" id="urlInput" placeholder="Ingresa URL de MP3">
-    <button id="loadUrlButton">Cargar desde URL</button>
-    <button id="loadServerFileButton">Mozart: Andante From Piano Concerto No. 21 KV 467 by Markus Staab</button>
-    <label for="fftSizeRange">Tamaño de FFT:</label>
-    <input type="range" id="fftSizeRange" min="0" max="10" value="5">
-    <span id="fftSizeValue">1024</span>
-
-    <canvas id="canvas"></canvas>
-
-    <button id="playButton" disabled>Play</button>
-    <button id="pauseButton" disabled style="display: none;">Pause</button>
-    <p><span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span></p>
--->
-    <!-- ESPECTROGRAMA-->
-    <div class="container mt-5">
-        <h1 class="mb-4">Espectrograma de un archivo de audio</h1>
-
-        <div class="row mb-3">
-            <div class="col-md-6 mb-3">
-                <div class="input-group">
-                    <input type="file" class="form-control" id="fileInput" accept="audio/mpeg,audio/ogg">
-                </div>
+    <article>
+        <div class="container">
+            <div class="text-center mt-3">
+                <h1>&#x1F326; API del clima &#x1F326;</h1>
+                <h6 id="fecha-actual"></h6>
             </div>
-            <div class="col-md-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="urlInput" placeholder="Ingresa URL de MP3">
-                    <button class="btn btn-primary" id="loadUrlButton">Cargar desde URL</button>
+
+            <div class="text-center mt-3">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <label for="capitales">&#x1F5FA; Selecciona una capital:</label>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-12 my-3">
+                        <select id="capitales" name="capitales">
+                            <!-- Las opciones se agregarán aquí mediante JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="resultado">
+                    <!-- Aquí se mostrarán los datos del clima -->
+                </div>
+                <!--Tabulator table-->
+                <div class="p-1">
+                    <div id="example-table"></div>
                 </div>
             </div>
         </div>
-
-        <div class="row mb-3">
-            <div class="col-12">
-                <button class="btn btn-secondary" id="loadServerFileButton">
-                    Mozart: Andante From Piano Concerto No. 21 KV 467 by Markus Staab
-                </button>
-            </div>
-        </div>
-
-        <div class="row mb-3 align-items-center">
-            <div class="col-md-3">
-                <label for="fftSizeRange" class="form-label">Tamaño de FFT:</label>
-            </div>
-            <div class="col-md-7">
-                <input type="range" class="form-range" id="fftSizeRange" min="0" max="10" value="5">
-            </div>
-            <div class="col-md-2 text-center">
-                <span id="fftSizeValue" class="badge bg-secondary">1024</span>
-            </div>
-        </div>
-
-        <div id="loadingSpinner" class="d-none text-center">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Cargando...</span>
-            </div>
-            <p class="mt-2">Cargando sonido...</p>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-12">
-                <canvas id="canvas" class="w-100"></canvas>
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-12 text-center">
-                <button class="btn btn-primary me-2" id="playButton" disabled>Play</button>
-                <button class="btn btn-secondary" id="pauseButton" disabled style="display: none;">Pause</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <p class="text-center">
-                    <span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span>
-                </p>
-            </div>
-        </div>
-    </div>
+    </article>
 
     <div class="container">
         <!-- FOOTER -->
@@ -184,7 +132,7 @@
                     <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
                                 <use xlink:href="#facebook"></use>
                             </svg></a></li>
-                    <li class="ms-3"><a class="text-body-secondary" href="https://github.com/csgutierm"><svg class="bi" width="24" height="24">
+                    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
                                 <use xlink:href="#github"></use>
                             </svg></a></li>
                 </ul>
@@ -290,7 +238,9 @@
     <script src="assets/js/color-mode.js"></script>
     <script src="assets/js/validation.js"></script>
     <script defer src="assets/js/scripts.js"></script>
-    <script defer src="assets/js/espectrometro_v2.js"></script>
+    <script src="assets/js/clima.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js "></script>
 </body>
 
 </html>
