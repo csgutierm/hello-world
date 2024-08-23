@@ -79,7 +79,11 @@ let isPaused = false;
 let isDrawing = false;
 
 canvas.width = window.innerWidth - 16;
-canvas.height = 512;
+if (window.innerWidth <= 768) {
+    canvas.height = 256;
+} else {
+    canvas.height = 512;
+}
 
 fileInput.addEventListener('change', function (event) {
     loadAudioFromFile(event.target.files[0]);
