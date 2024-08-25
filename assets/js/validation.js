@@ -5,28 +5,26 @@
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll('.needs-validation')
 
+  const overlay = document.getElementById('overlay');
+  const popupMessage = document.getElementById('popupMessage');
+
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
       if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
-      }
-        // Mostrar el mensaje pop-up
-        const overlay = document.getElementById('overlay');
-        overlay.classList.remove('d-none');
+      } else {
 
-        const popupMessage = document.getElementById('popupMessage');
+        //PREVENIR EL ENVIO DEL FORM MIENTRAS MOSTRAMOS UN MENSAJE
+        //ESTO NO ES RECOMENDADO PERO YA QUE NO CONTAMOS CON SERVER ES UNA FORMA DE MOSTRAR MENSAJES
+        event.preventDefault()
         popupMessage.classList.remove('d-none');
-        popupMessage.classList.add('d-block');
-
-        // Ocultar el mensaje después de 3 segundos
         setTimeout(() => {
-          popupMessage.classList.remove('d-block');
           popupMessage.classList.add('d-none');
-          overlay.classList.add('d-none');
+          form.submit();
         }, 3000);
-
+      }
       form.classList.add('was-validated')
     }, false)
   })
