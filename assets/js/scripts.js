@@ -24,3 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 */
+
+
+var div = document.getElementById("mypopover");
+document.getElementById("mypopover").innerHTML = "<b>Por trabajar</b><p>Esto se terminará de diseñar en el futuro</p>";

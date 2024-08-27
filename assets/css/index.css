@@ -114,3 +114,7 @@ img {
   #popupMessage {
     z-index: 1000;
   }
+
+  #mypopover::backdrop {
+    background: rgba(0, 0, 0, 0.92);
+  }
