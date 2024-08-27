@@ -116,5 +116,11 @@ img {
   }
 
   #mypopover::backdrop {
-    background: rgba(0, 0, 0, 0.92);
+    /*background: rgba(0, 0, 0, 0.92);*/
+    backdrop-filter: blur(20px);
+  }
+
+  #mypopover{
+    border-radius: 10px;
+    padding: 10px;
   }
