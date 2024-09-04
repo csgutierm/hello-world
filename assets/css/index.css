@@ -124,3 +124,20 @@ img {
     border-radius: 10px;
     padding: 10px;
   }
+
+
+ /*Cards de la misma altura y boton alineado a la derecha en el bottom*/ 
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .btn-primary {
+    align-self: flex-end;
+  }
+
